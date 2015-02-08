@@ -39,9 +39,9 @@ public class GridSearchMain {
 		if (searchType.equalsIgnoreCase("bfs")) {
 			searcher = new BreadthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("dfs")) {
-			searcher = new DepthFirstSearch();
+			searcher = new DepthFirstSearch(gridMap);
 		} else {
-			searcher = new AStarSearch();
+			searcher = new AStarSearch(gridMap);
 		} 
 		start = gridMap.getStartPosition();
 		goal = gridMap.getGoalPosition();

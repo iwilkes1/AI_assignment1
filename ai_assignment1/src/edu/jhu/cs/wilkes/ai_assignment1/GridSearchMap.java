@@ -24,8 +24,8 @@ public class GridSearchMap {
 	public GridSearchMap(String mapFile) throws FileNotFoundException {
 		Scanner readFile = new Scanner(new FileReader(mapFile));
 		// TODO check if this is the correct order for rows and cols. 
-		this.rows = readFile.nextInt();
-		this.cols = readFile.nextInt();	
+		this.cols = readFile.nextInt();
+		this.rows = readFile.nextInt();	
 		int rowCounter = 0;
 		String line;
 		Position currPosition;

@@ -17,7 +17,7 @@ public class DepthFirstSearch implements GridSearchAlgorithm {
 	
 	@Override
 	public GridSearchPath gridSearch(Position start, Position goal) {
-		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(), start);
+		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
 		pathsToCheck.push(currPath);
 		while(!pathsToCheck.isEmpty()) {
 			this.nodesExpanded++;

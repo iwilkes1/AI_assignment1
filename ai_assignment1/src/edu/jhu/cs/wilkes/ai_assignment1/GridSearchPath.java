@@ -2,18 +2,21 @@ package edu.jhu.cs.wilkes.ai_assignment1;
 
 import java.util.ArrayList;
 
-public class GridSearchPath {
-
+public class GridSearchPath implements Comparable<GridSearchPath> {
+	
+	private Position goal;
 	private static final int START_PATH_COST = 0;
 	private ArrayList<Position> path;
 	private int cost;
 	
 	/**
 	 * base constructor for a grid search path.  starting path cost is 0.
+	 * @param the goal for this search path.
 	 */
-	public GridSearchPath() {
+	public GridSearchPath(Position goal) {
 		this.path = new ArrayList<Position>();
 		this.cost = START_PATH_COST;
+		this.goal = goal;
 	}
 	
 	/**
@@ -22,6 +25,7 @@ public class GridSearchPath {
 	 * @param toAdd the new node to be added to the end of the path.
 	 */
 	public GridSearchPath(GridSearchPath tail, Position toAdd) {
+		this.goal = goal;
 		this.cost = START_PATH_COST;
 		this.path = new ArrayList<Position>();
 		for (Position p: tail.path) {
@@ -48,6 +52,27 @@ public class GridSearchPath {
 	}
 	
 	/**
+	 * determines the A* cost of a path. 
+	 * @param goal the node we are trying to reach.
+	 * @return the predicted cost to reach that goal.
+	 */
+	private double getAStarCost() {
+		return this.getCost() + heuristicCost();
+	}
+	
+	/**
+	 * heuristic cost based on the sum of manhattan and euclidian distance divided by two.
+	 * @param goal the position of the goal
+	 * @return the total heuristic value to get to that goal.
+	 */
+	private double heuristicCost() {
+		Position currNode = this.getLastNode();
+		double xDiff = goal.getX() - currNode.getX();
+		double yDiff = goal.getY() - currNode.getY();
+		return (Math.abs(xDiff) + Math.abs(yDiff) + 
+				Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2)))/2.0 ;
+	}
+	/**
 	 * Returns the last element in the path.
 	 * @return the last position visited on this path.
 	 */
@@ -65,5 +90,18 @@ public class GridSearchPath {
 		}
 		System.out.println("Path cost: " + this.cost);
 	}
+
+	@Override
+	public int compareTo(GridSearchPath other) {
+		if (this.getAStarCost() > other.getAStarCost()) {
+			return 1;
+		} else if (this.getAStarCost() < other.getAStarCost()){
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+	
+	
 	
 }
