@@ -63,8 +63,6 @@ public class GridSearchMap {
 			adjacentPositions.add(map[y][x - 1]);
 
 		}
-		System.out.println("right node:");
-		map[y][x + 1].printPosition();
 		if (x < cols - 1 && map[y][x + 1].isTraversable()) {
 			adjacentPositions.add(map[y][x + 1]);
 

@@ -1,6 +1,5 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
