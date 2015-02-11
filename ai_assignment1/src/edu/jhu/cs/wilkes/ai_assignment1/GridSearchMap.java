@@ -27,7 +27,7 @@ public class GridSearchMap {
 		this.cols = readFile.nextInt();
 		this.rows = readFile.nextInt();	
 		int rowCounter = 0;
-		String line;
+		String line = readFile.nextLine();
 		Position currPosition;
 		
 		map = new Position[rows][cols];
