@@ -24,8 +24,13 @@ public class GridSearchMain {
 		
 		GridSearchAlgorithm searcher = setUpSearch();
 
+		// TODO remove print statements
 		start = gridMap.getStartPosition();
+		System.out.println("start");
+		start.printPosition();
 		goal = gridMap.getGoalPosition();
+		System.out.println("goal");
+		goal.printPosition();
 		// runs the search
 		path = searcher.gridSearch(start, goal);
 		if (path == null) {

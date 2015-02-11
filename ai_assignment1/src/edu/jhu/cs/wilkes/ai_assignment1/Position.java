@@ -85,5 +85,12 @@ public class Position {
 	public boolean equals(Position o) {
 		return this.getX() == o.getX() && this.getY() == o.getY();
 	}
+
+	/**
+	 * debugging method to print info about a position. 
+	 */
+	public void printPosition() {
+		System.out.println("position: (" + this.getX() + "," + this.getY() + ") : " + this.positionChar);
+	}
 	
 }
