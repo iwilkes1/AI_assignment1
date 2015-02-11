@@ -41,9 +41,12 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 			this.nodesExpanded++;
 			
 			if (currPath.getLastNode().isGoal()) {
+				System.out.println("goal found");
 				return currPath;
 			} else {
 				for (Position p:  this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
+					System.out.print("next node: ");
+					p.printPosition();
 					if (!checkedNodes.contains(p)) {
 						System.out.print("adjacent node added at   ");
 						p.printPosition();
