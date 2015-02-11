@@ -30,7 +30,11 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 		while(!pathsToCheck.isEmpty()) {
 			currPath = pathsToCheck.remove();
 			if (checkedNodes.contains(currPath.getLastNode())) {
+				// TODO remove debugging output
+				System.out.print("node already visited   ");
+				currPath.getLastNode().printPosition();
 				continue;
+				
 			}
 			checkedNodes.add(currPath.getLastNode());
 			this.nodesExpanded++;
@@ -40,6 +44,8 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 			} else {
 				for (Position p:  this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
 					if (!checkedNodes.contains(p)) {
+						System.out.print("adjacent node added at   ");
+						p.printPosition();
 						pathsToCheck.add(new GridSearchPath(currPath, p));
 					}
 				}

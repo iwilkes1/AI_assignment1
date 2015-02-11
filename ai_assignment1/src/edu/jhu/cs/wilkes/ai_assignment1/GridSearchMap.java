@@ -23,7 +23,6 @@ public class GridSearchMap {
  */
 	public GridSearchMap(String mapFile) throws FileNotFoundException {
 		Scanner readFile = new Scanner(new FileReader(mapFile));
-		// TODO check if this is the correct order for rows and cols. 
 		this.cols = readFile.nextInt();
 		this.rows = readFile.nextInt();	
 		int rowCounter = 0;
@@ -38,8 +37,6 @@ public class GridSearchMap {
 			for (int j = 0; j < line.length(); j++) {
 				currPosition = new Position(rowCounter, j, line.charAt(j));
 				map[rowCounter][j] = currPosition;
-				// TODO remove debug lines
-				System.out.println(line.charAt(j));
 				if (currPosition.isStart()) {
 					start = map[rowCounter][j];
 				} else if (currPosition.isGoal()) {
