@@ -28,6 +28,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 		checkedNodes = new HashSet<Position>();
 		
 		while(!pathsToCheck.isEmpty()) {
+			System.out.println("enter while");
 			currPath = pathsToCheck.remove();
 			if (checkedNodes.contains(currPath.getLastNode())) {
 				// TODO remove debugging output
