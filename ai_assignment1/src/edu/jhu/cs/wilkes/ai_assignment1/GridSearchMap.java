@@ -47,6 +47,15 @@ public class GridSearchMap {
 			rowCounter++;
 		}
 		readFile.close();
+		
+		// TODO remove debugging print.
+		System.out.println("**************");
+		for (int i = 0; i < rows; i++) {
+			for	(int j = 0; j < cols; j++) {
+				System.out.print(map[i][j].getChar());
+			}
+			System.out.println("");
+		}
 	}	
 	
 	/**

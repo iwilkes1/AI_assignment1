@@ -54,6 +54,14 @@ public class Position {
 		return this.cost;
 	}
 	
+	/** 
+	 * method to get the character of this position
+	 * @return the character associated with this position.
+	 */
+	public char getChar() {
+		return this.positionChar;
+	}
+	
 	/**
 	 * checks whether this node is the goal
 	 * @return true if it is the goal, false otherwise
