@@ -1,12 +1,15 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class AStarSearch implements GridSearchAlgorithm {
 
 	private PriorityQueue<GridSearchPath> pathsToCheck;
 	private GridSearchMap gridMap;
+	private Set<Position> checkedNodes;
 	private int nodesExpanded;
 	
 	public AStarSearch(GridSearchMap map) {
@@ -18,15 +21,23 @@ public class AStarSearch implements GridSearchAlgorithm {
 	@Override
 	public GridSearchPath gridSearch(Position start, Position goal) {
 		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
+		checkedNodes = new HashSet<Position>();
 		pathsToCheck.add(currPath);
 		while(!pathsToCheck.isEmpty()) {
-			this.nodesExpanded++;
+			
 			currPath = pathsToCheck.poll();
+			if (checkedNodes.contains(currPath.getLastNode())) {
+				continue;
+			}
+			checkedNodes.add(currPath.getLastNode());
+			this.nodesExpanded++;
 			if (currPath.getLastNode().isGoal()) {
 				return currPath;
 			} else {
 				for (Position p: (ArrayList<Position>) this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
-					pathsToCheck.add(new GridSearchPath(currPath, p));
+					if (!checkedNodes.contains(p)) {		
+						pathsToCheck.add(new GridSearchPath(currPath, p));
+					}
 				}
 			}
 		}

@@ -77,5 +77,13 @@ public class Position {
 	public boolean isTraversable() {
 		return this.positionChar != '#';
 	}
+
+	/**
+	 * equals method for comparing positions.
+	 * @param the other position that this one is being compared to.
+	 */
+	public boolean equals(Position o) {
+		return this.getX() == o.getX() && this.getY() == o.getY();
+	}
 	
 }
