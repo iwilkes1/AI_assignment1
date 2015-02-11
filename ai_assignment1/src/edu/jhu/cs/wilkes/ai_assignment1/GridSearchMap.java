@@ -33,7 +33,6 @@ public class GridSearchMap {
 		
 		while (readFile.hasNextLine()) {
 			line = readFile.nextLine();
-			System.out.println(line);
 			for (int j = 0; j < line.length(); j++) {
 				currPosition = new Position(j, rowCounter, line.charAt(j));
 				map[rowCounter][j] = currPosition;

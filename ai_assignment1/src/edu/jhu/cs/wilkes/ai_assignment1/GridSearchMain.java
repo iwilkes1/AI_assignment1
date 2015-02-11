@@ -36,11 +36,10 @@ public class GridSearchMain {
 		
 		if (path == null) {
 			System.out.println("Could not reach the goal");
-			System.out.println("Number of nodes expanded is infinite.");
 		} else {
 			path.printPath();
-			System.out.println("Number of nodes expanded: " + searcher.getNumNodesExpanded());
 		}
+		System.out.println("Number of nodes expanded: " + searcher.getNumNodesExpanded());
 	}
 	
 	/**
