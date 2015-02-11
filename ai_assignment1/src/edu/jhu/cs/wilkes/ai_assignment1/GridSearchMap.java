@@ -47,15 +47,6 @@ public class GridSearchMap {
 			rowCounter++;
 		}
 		readFile.close();
-		
-		// TODO remove debugging print.
-		System.out.println("**************");
-		for (int i = 0; i < rows; i++) {
-			for	(int j = 0; j < cols; j++) {
-				System.out.print(map[i][j].getX());
-			}
-			System.out.println("");
-		}
 	}	
 	
 	/**
@@ -68,25 +59,21 @@ public class GridSearchMap {
 		ArrayList<Position> adjacentPositions = new ArrayList<Position>();
 		int x = toCheck.getX();
 		int y = toCheck.getY();
-		System.out.print("toCheck: ");
-		toCheck.printPosition();
-		// TODO remove debugging output
 		if (x > 0 && map[y][x - 1].isTraversable()) {
 			adjacentPositions.add(map[y][x - 1]);
-			System.out.println("left added");
+
 		}
 		System.out.println("right node:");
 		map[y][x + 1].printPosition();
 		if (x < cols - 1 && map[y][x + 1].isTraversable()) {
 			adjacentPositions.add(map[y][x + 1]);
-			System.out.println("right added");
+
 		}
 		if (y > 0 && map[y - 1][x].isTraversable()) {
 			adjacentPositions.add(map[y - 1][x]);
-			System.out.println("up added");
+
 		}
 		if (y < rows - 1 && map[y + 1][x].isTraversable()) {
-			System.out.println("down added");
 			adjacentPositions.add(map[y + 1][x]);
 		}
 		return adjacentPositions;
