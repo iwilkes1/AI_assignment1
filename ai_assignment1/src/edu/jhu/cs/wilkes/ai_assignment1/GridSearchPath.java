@@ -25,7 +25,6 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 	 * @param toAdd the new node to be added to the end of the path.
 	 */
 	public GridSearchPath(GridSearchPath tail, Position toAdd) {
-		this.goal = goal;
 		this.cost = START_PATH_COST;
 		this.path = new ArrayList<Position>();
 		for (Position p: tail.path) {
