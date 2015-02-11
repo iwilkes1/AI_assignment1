@@ -59,8 +59,10 @@ public class GridSearchMap {
 		ArrayList<Position> adjacentPositions = new ArrayList<Position>();
 		int x = toCheck.getX();
 		int y = toCheck.getY();
+		System.out.print("toCheck: ");
+		toCheck.printPosition();
 		// TODO remove debugging output
-		if (x > 0 && map[y][x- 1].isTraversable()) {
+		if (x > 0 && map[y][x - 1].isTraversable()) {
 			adjacentPositions.add(map[y][x - 1]);
 			System.out.println("left added");
 		}
