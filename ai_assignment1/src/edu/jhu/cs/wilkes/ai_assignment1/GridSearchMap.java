@@ -52,7 +52,7 @@ public class GridSearchMap {
 		System.out.println("**************");
 		for (int i = 0; i < rows; i++) {
 			for	(int j = 0; j < cols; j++) {
-				System.out.print(map[i][j].getChar());
+				System.out.print(map[i][j].getX());
 			}
 			System.out.println("");
 		}
