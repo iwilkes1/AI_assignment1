@@ -54,8 +54,8 @@ public class GridSearchMap {
 	 * @param toCheck the position about which traversable nodes are being added.
 	 * @return the list containing the adjacent traversable nodes.
 	 */
-	public java.util.List getAdjacentNodes(Position toCheck) {
-		ArrayList adjacentPositions = new ArrayList();
+	public ArrayList<Position> getAdjacentNodes(Position toCheck) {
+		ArrayList<Position> adjacentPositions = new ArrayList<Position>();
 		int x = toCheck.getX();
 		int y = toCheck.getY();
 		

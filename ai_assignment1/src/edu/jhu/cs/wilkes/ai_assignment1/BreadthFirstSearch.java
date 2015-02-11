@@ -29,7 +29,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 			if (currPath.getLastNode().isGoal()) {
 				return currPath;
 			} else {
-				for (Position p: (ArrayList<Position>) this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
+				for (Position p:  this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
 					pathsToCheck.add(new GridSearchPath(currPath, p));
 				}
 			}
