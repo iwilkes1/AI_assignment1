@@ -37,6 +37,7 @@ public class GridSearchMap {
 			System.out.println(line);
 			for (int j = 0; j < line.length(); j++) {
 				currPosition = new Position(rowCounter, j, line.charAt(j));
+				map[rowCounter][j] = currPosition;
 				// TODO remove debug lines
 				System.out.println(line.charAt(j));
 				if (currPosition.isStart()) {
@@ -44,7 +45,7 @@ public class GridSearchMap {
 				} else if (currPosition.isGoal()) {
 					goal = map[rowCounter][j];
 				}
-				map[rowCounter][j] = currPosition;
+				
 			}
 			rowCounter++;
 		}
