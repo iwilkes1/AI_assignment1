@@ -17,6 +17,7 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 		this.path = new ArrayList<Position>();
 		this.cost = START_PATH_COST;
 		this.goal = goal;
+		System.out.println("Base constructor pass");
 	}
 	
 	/**
@@ -30,7 +31,9 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 		for (Position p: tail.path) {
 			this.addNode(p);
 		}
+		System.out.println("old nodes added");
 		this.addNode(toAdd);
+		System.out.println("new nodes");
 	}
 	
 	/**
