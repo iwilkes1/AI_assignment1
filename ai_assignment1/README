@@ -65,8 +65,9 @@ the path the search algorithm found to the goal.  The origin is the top left
 corner of the map files, and the x direction is horizontal, and y increases
 moving down lines. After the coordinates are listed, the path cost of the 
 path found will be output, as well as the number of nodes expanded in the
-search.  I consider a node to be expanded when it comes out of the search
-data structure and its children are then entered into the data structure.
+search.  I consider a node to be expanded when it is added to the search
+data structure.
+
 Also, I have implemented basic repeated state detection for all three 
 algorithms, to the point where no nodes are expanded twice, and nodes are only
 visited once in the search path.  If they are seen again, they are skipped,
