@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.Stack;
 
 /**
- * DFS search algorithm.  Uses a set and minor look-ahead to prevent queueing nodes multiple times. 
+ * DFS search algorithm.  Uses a set and minor look-ahead to prevent expanding nodes multiple times. 
  * @author Ian Wilkes
  *
  */
