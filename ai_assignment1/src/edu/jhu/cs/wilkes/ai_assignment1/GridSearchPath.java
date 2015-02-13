@@ -2,6 +2,12 @@ package edu.jhu.cs.wilkes.ai_assignment1;
 
 import java.util.ArrayList;
 
+/**
+ * Class used to store all the nodes of the search path in one place.
+ * Somewhat deprecated by storing a parent in the SearchPosition Class.
+ * @author Ian Wilkes
+ *
+ */
 public class GridSearchPath implements Comparable<GridSearchPath> {
 	
 	private MapPosition goal;

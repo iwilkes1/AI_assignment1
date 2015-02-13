@@ -9,6 +9,7 @@ import java.util.Scanner;
  * 
  * @author Ian Wilkes
  * Class for reading a grid map file and handling checking of actions from a given location.
+ * Provides the representation of the search space.
  */
 public class GridSearchMap {
 	private MapPosition[][] map;

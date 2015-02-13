@@ -3,44 +3,67 @@ package edu.jhu.cs.wilkes.ai_assignment1;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
-
+import java.util.Stack;
 /**
- * A* search algorithm implemented using a set to prevent node reuse. 
+ * A* search class used to perform searches using a priority queue.
+ * Heuristic implemented on the Search positions, but here it is for half of the sum of the 
+ * Euclidean distance and Manhattan distance.
  * @author Ian Wilkes
  *
  */
 public class AStarSearch implements GridSearchAlgorithm {
-
-	private PriorityQueue<GridSearchPath> pathsToCheck;
-	private GridSearchMap gridMap;
+	private PriorityQueue<SearchPosition> pathsToCheck;
 	private Set<MapPosition> checkedNodes;
+	private GridSearchMap gridMap;
 	private int nodesExpanded;
 	
+	/** 
+	 * General constructor for the search class
+	 * @param map the map on which the search takes place.
+	 */
 	public AStarSearch(GridSearchMap map) {
 		this.gridMap = map;
 		this.nodesExpanded = 0;
-		this.pathsToCheck = new PriorityQueue<GridSearchPath>();
+		this.pathsToCheck = new PriorityQueue<SearchPosition>();
 	}
 	
 	@Override
 	public GridSearchPath gridSearch(MapPosition start, MapPosition goal) {
-		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
+		GridSearchPath resultPath;
+		Stack<SearchPosition> pathReverser;
+		SearchPosition currPosition = new SearchPosition(start, null, this.gridMap.getHeuristicCost(start), 0);
 		checkedNodes = new HashSet<MapPosition>();
-		pathsToCheck.add(currPath);
+		pathsToCheck.add(currPosition);
+		
+		
 		while(!pathsToCheck.isEmpty()) {
-			
-			currPath = pathsToCheck.poll();
-			if (checkedNodes.contains(currPath.getLastNode())) {
+		
+			currPosition = pathsToCheck.poll();
+			// Skips duplicate nodes. May be redundant
+			if (checkedNodes.contains(currPosition.getCurrentPosition())) {
 				continue;
 			}
-			checkedNodes.add(currPath.getLastNode());
+			checkedNodes.add(currPosition.getCurrentPosition());
 			this.nodesExpanded++;
-			if (currPath.getLastNode().isGoal()) {
-				return currPath;
+			// iterate back up to the start node, then add the nodes into the path to be returned.
+			// essentailly reversing the order of nodes.
+			if (currPosition.getCurrentPosition().isGoal()) {
+				resultPath = new GridSearchPath(goal);
+				pathReverser = new Stack<SearchPosition>();
+				while (currPosition != null) {
+					pathReverser.push(currPosition);
+					currPosition = currPosition.getPreviousPosition();
+				}
+				while (!pathReverser.isEmpty()) {
+					resultPath.addNode(pathReverser.pop().getCurrentPosition());
+				}
+				return resultPath;
 			} else {
-				for (MapPosition p: this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
-					if (!checkedNodes.contains(p)) {		
-						pathsToCheck.add(new GridSearchPath(currPath, p));
+				// Adding new nodes. Nodes are only added if they have not been visited before.
+				for (MapPosition p: this.gridMap.getAdjacentNodes(currPosition.getCurrentPosition())) {
+					if (!checkedNodes.contains(p)) {
+						pathsToCheck.add(new SearchPosition(p, currPosition, 
+								this.gridMap.getHeuristicCost(p), currPosition.getPathCost()));
 					}
 				}
 			}

@@ -63,15 +63,11 @@ public class GridSearchMain {
 		}	
 		// setting up the search type.
 		if (searchType.equalsIgnoreCase("bfs")) {
-			searcher = new OtherBreadthFirstSearch(gridMap);
-			//searcher = new BreadthFirstSearch(gridMap);
+			searcher = new BreadthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("dfs")) {
-			// TODO check new DFS
-			//searcher = new DepthFirstSearch(gridMap);
-			searcher = new OtherDepthFirstSearch(gridMap);
+			searcher = new DepthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("astar")) {
-			searcher = new OtherAStarSearch(gridMap);
-			//searcher = new AStarSearch(gridMap);
+			searcher = new AStarSearch(gridMap);
 		} else {
 			System.out.println("Invalid search type. Exiting");
 			System.exit(1);

@@ -1,5 +1,11 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
+/**
+ * Interface for the search algorithms.
+ * Planned implementations: A*, BFS, DFS.
+ * @author Ian Wilkes
+ *
+ */
 public interface GridSearchAlgorithm {
 	
 	/**

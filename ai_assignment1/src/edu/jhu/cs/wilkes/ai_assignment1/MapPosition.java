@@ -1,7 +1,9 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
 /**
- * Position class which will be used as the nodes in the search tree. 
+ * MapPosition class which will be used as the nodes in the GridMap.
+ * Stores location information about the specific positions, as well as
+ * their characters, and can tell if they are goals or not. 
  * @author Ian Wilkes
  *
  */
