@@ -1,0 +1,93 @@
+Ian Wilkes 
+Artificial Intelligence Spring 2015, 600.335
+Homework 1: Search
+
+Included files:
+run.sh - shell script to run all java code.
+compile.sh - shell script to compile all java code.
+
+src/Makefile - a makefile to facilitate compilation and execution of java code.
+
+src/edu/jhu/cs/wilkes/ai_assignment1:
+	AStarSearch.java - Core code for executing an A* search.
+
+	BreadthFirstSearch.java - Core code for executing a BFS search.
+
+	DepthFirstSearch.java - Core code for executing a DFS search.
+
+	GridSearchAlgorithm.java - Interface to which the searches adhere.
+
+	GridSearchMain.java - Java class which stores the main function of 
+				package.  Using command line arguments selects
+				which search to use, and where to look for the
+				map files.
+
+	GridSearchMap.java - file to handle reading in a map file and storing
+				it logically.
+
+	GridSearchPath.java - A class which stores multiple nodes in one 
+				location and computes total costs of paths.
+
+	MapPosition.java - Data generated from the map files.  Stores x,y
+				coordinates as well as the type of character
+				at that location.
+
+	SearchPosition.java - Basic nodes in the searches.  Each search 
+				position contains a MapPosition, as well as
+				the SearchPosition from which this position
+				branched.  
+
+
+
+doc/
+	The pdf file of the submission containing data on the performance
+	of the code, as well as answers to the written portions of the 
+	assignment.
+
+
+output/
+	This folder contains the output of my code for all of the maps
+	with all three search algorithms.  The filenames are set up 
+	as <map name>.<search type>.txt  
+
+USAGE:
+
+To properly run my code, first compile the code by running ./compile.sh.
+
+Next, run the code using ./run.sh  <path to mapfile> <search type>.
+I recommend using the full path to the map files, as the run script switches
+directories while executing.  The three search types I have implemented are
+BFS, DFS and A*, and their corresponding command line flags are bfs, dfs and 
+astar respectively.  Only one search type will run per execution of the run.sh.
+
+The output of the execution will be a series of (x,y) positions which represent
+the path the search algorithm found to the goal.  The origin is the top left
+corner of the map files, and the x direction is horizontal, and y increases
+moving down lines. After the coordinates are listed, the path cost of the 
+path found will be output, as well as the number of nodes expanded in the
+search.  I consider a node to be expanded when it comes out of the search
+data structure and its children are then entered into the data structure.
+Also, I have implemented basic repeated state detection for all three 
+algorithms, to the point where no nodes are expanded twice, and nodes are only
+visited once in the search path.  If they are seen again, they are skipped,
+and not added back into the search data structure. If no path to the goal is
+found, then the code will output a line say that, and that the path cost is
+infinite.  It will then list the number of nodes expanded to determine this.
+
+
+REFLECTIONS
+I learned that different people have drastically different ideas of what
+constitutes basic BFS and DFS.  Previuosly I was taught to always include
+at least rudimentary repeated state detection, especially in the case of
+DFS, so thinking about DFS without it was kind of strange.  As such, I chose
+to implement repeated state detection to try to prevent the infinite looping
+which would probably occur.  I probably spent about 8 hours total coding for
+this assignment.  The coding portion was fairly straightforward, but I had some
+difficulty doing the written portion, mainly because I was repeatedly confused
+by the instructions, and got some conflicting responses from the professor and 
+the TAs via piazza about what we actually had to do, specifically, whether or
+not to include repeated state detection, and what is considered an expanded
+node. 
+
+
+
