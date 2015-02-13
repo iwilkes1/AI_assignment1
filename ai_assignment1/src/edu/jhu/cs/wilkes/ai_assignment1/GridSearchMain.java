@@ -28,7 +28,7 @@ public class GridSearchMain {
 		path = searcher.gridSearch(start, goal);
 		
 		if (path == null) {
-			System.out.println("Could not reach the goal");
+			System.out.println("Could not reach the goal.\nPath cost: infinte.");
 		} else {
 			path.printPath();
 		}
@@ -66,7 +66,7 @@ public class GridSearchMain {
 			searcher = new BreadthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("dfs")) {
 			searcher = new DepthFirstSearch(gridMap);
-		} else if (searchType.equalsIgnoreCase("a*")) {
+		} else if (searchType.equalsIgnoreCase("astar")) {
 			searcher = new AStarSearch(gridMap);
 		} else {
 			System.out.println("Invalid search type. Exiting");
