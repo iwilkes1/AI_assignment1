@@ -1,0 +1,6 @@
+make: Entering directory `/home/iwilkes1/ai/AI_assignment1/AI_assignment1/ai_assignment1/src'
+java -cp ../bin edu.jhu.cs.wilkes.ai_assignment1.GridSearchMain  /home/iwilkes1/data/map8.txt dfs
+(1,2), (2,2), (3,2), (4,2), (5,2), (5,1), (6,1), (6,2), (6,3), (6,4), (6,5), (6,6), (6,7), (6,8), (7,8), (8,8), 
+Path cost: 24
+Number of nodes expanded: 16
+make: Leaving directory `/home/iwilkes1/ai/AI_assignment1/AI_assignment1/ai_assignment1/src'
