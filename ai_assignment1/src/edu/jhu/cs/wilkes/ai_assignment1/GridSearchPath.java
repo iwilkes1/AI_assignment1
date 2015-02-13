@@ -38,7 +38,7 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 	 * Adds a node to an existing path at the end of the path and updates the path
 	 * @param toAdd the new node to add. 
 	 */
-	private void addNode(Position toAdd) {
+	public void addNode(Position toAdd) {
 		this.path.add(toAdd);
 		this.cost += toAdd.getCost();
 	}

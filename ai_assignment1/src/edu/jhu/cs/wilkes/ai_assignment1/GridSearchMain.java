@@ -65,7 +65,9 @@ public class GridSearchMain {
 		if (searchType.equalsIgnoreCase("bfs")) {
 			searcher = new BreadthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("dfs")) {
-			searcher = new DepthFirstSearch(gridMap);
+			// TODO check new DFS
+			//searcher = new DepthFirstSearch(gridMap);
+			searcher = new OtherDepthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("astar")) {
 			searcher = new AStarSearch(gridMap);
 		} else {
