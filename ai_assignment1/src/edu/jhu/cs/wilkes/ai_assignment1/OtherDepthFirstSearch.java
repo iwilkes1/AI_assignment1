@@ -24,7 +24,6 @@ public class OtherDepthFirstSearch implements GridSearchAlgorithm {
 		checkedNodes = new HashSet<Position>();
 		pathsToCheck.push(currPosition);
 		
-		
 		while(!pathsToCheck.isEmpty()) {
 			currPosition = pathsToCheck.pop();
 			if (checkedNodes.contains(currPosition.getCurrentPosition())) {
