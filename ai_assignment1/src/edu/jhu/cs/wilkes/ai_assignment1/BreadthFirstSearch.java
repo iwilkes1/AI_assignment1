@@ -36,7 +36,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 		SearchPosition currPosition = new SearchPosition(start, null);
 		checkedNodes = new HashSet<MapPosition>();
 		pathsToCheck.add(currPosition);
-		
+		this.nodesExpanded = 1;
 		
 		while(!pathsToCheck.isEmpty()) {
 			currPosition = pathsToCheck.remove();
@@ -44,7 +44,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 				continue;
 			}
 			checkedNodes.add(currPosition.getCurrentPosition());
-			this.nodesExpanded++;
+			
 			
 			// iterate back up to the start node, then add the nodes into the path to be returned. 
 			// the final node is found, and then the path is constructed back from that.
@@ -64,6 +64,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 				for (MapPosition p: this.gridMap.getAdjacentNodes(currPosition.getCurrentPosition())) {
 					if (!checkedNodes.contains(p)){
 						pathsToCheck.add(new SearchPosition(p, currPosition));
+						this.nodesExpanded++;
 					}
 				}
 			}

@@ -34,7 +34,7 @@ public class AStarSearch implements GridSearchAlgorithm {
 		SearchPosition currPosition = new SearchPosition(start, null, this.gridMap.getHeuristicCost(start), 0);
 		checkedNodes = new HashSet<MapPosition>();
 		pathsToCheck.add(currPosition);
-		
+		this.nodesExpanded = 1;
 		
 		while(!pathsToCheck.isEmpty()) {
 		
@@ -44,7 +44,7 @@ public class AStarSearch implements GridSearchAlgorithm {
 				continue;
 			}
 			checkedNodes.add(currPosition.getCurrentPosition());
-			this.nodesExpanded++;
+			
 			// iterate back up to the start node, then add the nodes into the path to be returned.
 			// essentailly reversing the order of nodes.
 			if (currPosition.getCurrentPosition().isGoal()) {
@@ -64,6 +64,7 @@ public class AStarSearch implements GridSearchAlgorithm {
 					if (!checkedNodes.contains(p)) {
 						pathsToCheck.add(new SearchPosition(p, currPosition, 
 								this.gridMap.getHeuristicCost(p), currPosition.getPathCost()));
+						this.nodesExpanded++;
 					}
 				}
 			}

@@ -33,14 +33,13 @@ public class DepthFirstSearch implements GridSearchAlgorithm {
 		SearchPosition currPosition = new SearchPosition(start, null);
 		checkedNodes = new HashSet<MapPosition>();
 		pathsToCheck.push(currPosition);
-		
+		this.nodesExpanded = 1;
 		while(!pathsToCheck.isEmpty()) {
 			currPosition = pathsToCheck.pop();
 			if (checkedNodes.contains(currPosition.getCurrentPosition())) {
 				continue;
 			}
 			checkedNodes.add(currPosition.getCurrentPosition());
-			this.nodesExpanded++;
 			// iterate back up to the start node, then add the nodes into the path to be returned. 
 			if (currPosition.getCurrentPosition().isGoal()) {
 				resultPath = new GridSearchPath(goal);
@@ -55,8 +54,10 @@ public class DepthFirstSearch implements GridSearchAlgorithm {
 				return resultPath;
 			} else {
 				for (MapPosition p: this.gridMap.getAdjacentNodes(currPosition.getCurrentPosition())) {
-					if (!checkedNodes.contains(p)){
+					if (!checkedNodes.contains(p)) {
 						pathsToCheck.push(new SearchPosition(p, currPosition));
+						this.nodesExpanded++;
+						
 					}
 				}
 			}
