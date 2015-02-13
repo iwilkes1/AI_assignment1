@@ -17,8 +17,8 @@ public class GridSearchMain {
 	 * 
 	 */
 	public static void main(String[] args) {
-		Position start;
-		Position goal;
+		MapPosition start;
+		MapPosition goal;
 		GridSearchPath path;
 		GridSearchAlgorithm searcher = setUpSearch(args);
 

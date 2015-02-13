@@ -5,7 +5,7 @@ package edu.jhu.cs.wilkes.ai_assignment1;
  * @author Ian Wilkes
  *
  */
-public class Position {
+public class MapPosition {
 	private int x;
 	private int y;
 	private int cost;
@@ -19,7 +19,7 @@ public class Position {
 	 * @param y the y location of this position
 	 * @param positionChar the charachter at this position.
 	 */
-	public Position(int x, int y, char positionChar) {
+	public MapPosition(int x, int y, char positionChar) {
 		this.x = x;
 		this.y = y;
 		this.positionChar = positionChar;
@@ -90,7 +90,7 @@ public class Position {
 	 * equals method for comparing positions.
 	 * @param the other position that this one is being compared to.
 	 */
-	public boolean equals(Position o) {
+	public boolean equals(MapPosition o) {
 		return this.getX() == o.getX() && this.getY() == o.getY();
 	}
 

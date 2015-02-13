@@ -8,7 +8,7 @@ public interface GridSearchAlgorithm {
 	 * @param goal the position to end the search
 	 * @return If a path to the goal is found, returns that path, if none is found, returns null.
 	 */
-	public GridSearchPath gridSearch(Position start, Position goal);
+	public GridSearchPath gridSearch(MapPosition start, MapPosition goal);
 	
 	/**
 	 * returns the number of nodes expanded during the search process.

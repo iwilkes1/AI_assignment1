@@ -1,19 +1,22 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-public class OtherDepthFirstSearch implements GridSearchAlgorithm {
-	private Stack<SearchPosition> pathsToCheck;
+public class OtherBreadthFirstSearch implements GridSearchAlgorithm {
+
+	private Queue<SearchPosition> pathsToCheck;
 	private Set<MapPosition> checkedNodes;
 	private GridSearchMap gridMap;
 	private int nodesExpanded;
 	
-	public OtherDepthFirstSearch(GridSearchMap map) {
+	public OtherBreadthFirstSearch(GridSearchMap map) {
 		this.gridMap = map;
 		this.nodesExpanded = 0;
-		this.pathsToCheck = new Stack<SearchPosition>();
+		this.pathsToCheck = new LinkedList<SearchPosition>();
 	}
 	
 	@Override
@@ -22,15 +25,16 @@ public class OtherDepthFirstSearch implements GridSearchAlgorithm {
 		Stack<SearchPosition> pathReverser;
 		SearchPosition currPosition = new SearchPosition(start, null);
 		checkedNodes = new HashSet<MapPosition>();
-		pathsToCheck.push(currPosition);
+		pathsToCheck.add(currPosition);
 		
 		while(!pathsToCheck.isEmpty()) {
-			currPosition = pathsToCheck.pop();
+			currPosition = pathsToCheck.remove();
 			if (checkedNodes.contains(currPosition.getCurrentPosition())) {
 				continue;
 			}
 			checkedNodes.add(currPosition.getCurrentPosition());
 			this.nodesExpanded++;
+			
 			// iterate back up to the start node, then add the nodes into the path to be returned. 
 			if (currPosition.getCurrentPosition().isGoal()) {
 				resultPath = new GridSearchPath(goal);
@@ -46,7 +50,7 @@ public class OtherDepthFirstSearch implements GridSearchAlgorithm {
 			} else {
 				for (MapPosition p: this.gridMap.getAdjacentNodes(currPosition.getCurrentPosition())) {
 					if (!checkedNodes.contains(p)){
-						pathsToCheck.push(new SearchPosition(p, currPosition));
+						pathsToCheck.add(new SearchPosition(p, currPosition));
 					}
 				}
 			}
@@ -58,4 +62,5 @@ public class OtherDepthFirstSearch implements GridSearchAlgorithm {
 	public int getNumNodesExpanded() {
 		return this.nodesExpanded;
 	}
+
 }

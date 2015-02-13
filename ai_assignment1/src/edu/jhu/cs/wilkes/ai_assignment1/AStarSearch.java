@@ -13,7 +13,7 @@ public class AStarSearch implements GridSearchAlgorithm {
 
 	private PriorityQueue<GridSearchPath> pathsToCheck;
 	private GridSearchMap gridMap;
-	private Set<Position> checkedNodes;
+	private Set<MapPosition> checkedNodes;
 	private int nodesExpanded;
 	
 	public AStarSearch(GridSearchMap map) {
@@ -23,9 +23,9 @@ public class AStarSearch implements GridSearchAlgorithm {
 	}
 	
 	@Override
-	public GridSearchPath gridSearch(Position start, Position goal) {
+	public GridSearchPath gridSearch(MapPosition start, MapPosition goal) {
 		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
-		checkedNodes = new HashSet<Position>();
+		checkedNodes = new HashSet<MapPosition>();
 		pathsToCheck.add(currPath);
 		while(!pathsToCheck.isEmpty()) {
 			
@@ -38,7 +38,7 @@ public class AStarSearch implements GridSearchAlgorithm {
 			if (currPath.getLastNode().isGoal()) {
 				return currPath;
 			} else {
-				for (Position p: this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
+				for (MapPosition p: this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
 					if (!checkedNodes.contains(p)) {		
 						pathsToCheck.add(new GridSearchPath(currPath, p));
 					}

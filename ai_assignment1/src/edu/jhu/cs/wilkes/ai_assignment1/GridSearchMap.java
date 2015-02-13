@@ -11,9 +11,9 @@ import java.util.Scanner;
  * Class for reading a grid map file and handling checking of actions from a given location.
  */
 public class GridSearchMap {
-	private Position[][] map;
-	private Position start;
-	private Position goal;
+	private MapPosition[][] map;
+	private MapPosition start;
+	private MapPosition goal;
 	private int rows;
 	private int cols;
 /**
@@ -27,14 +27,14 @@ public class GridSearchMap {
 		this.rows = readFile.nextInt();	
 		int rowCounter = 0;
 		String line = readFile.nextLine();
-		Position currPosition;
+		MapPosition currPosition;
 		
-		map = new Position[rows][cols];
+		map = new MapPosition[rows][cols];
 		
 		while (readFile.hasNextLine()) {
 			line = readFile.nextLine();
 			for (int j = 0; j < line.length(); j++) {
-				currPosition = new Position(j, rowCounter, line.charAt(j));
+				currPosition = new MapPosition(j, rowCounter, line.charAt(j));
 				map[rowCounter][j] = currPosition;
 				if (currPosition.isStart()) {
 					start = map[rowCounter][j];
@@ -54,8 +54,8 @@ public class GridSearchMap {
 	 * @param toCheck the position about which traversable nodes are being added.
 	 * @return the list containing the adjacent traversable nodes.
 	 */
-	public ArrayList<Position> getAdjacentNodes(Position toCheck) {
-		ArrayList<Position> adjacentPositions = new ArrayList<Position>();
+	public ArrayList<MapPosition> getAdjacentNodes(MapPosition toCheck) {
+		ArrayList<MapPosition> adjacentPositions = new ArrayList<MapPosition>();
 		int x = toCheck.getX();
 		int y = toCheck.getY();
 		if (x > 0 && map[y][x - 1].isTraversable()) {
@@ -80,7 +80,7 @@ public class GridSearchMap {
 	 * getter for the start position of the map
 	 * @return the start position
 	 */
-	public Position getStartPosition() {
+	public MapPosition getStartPosition() {
 		return this.start;
 	}
 	
@@ -88,7 +88,7 @@ public class GridSearchMap {
 	 * getter for the goal position of the map
 	 * @return the goal position.
 	 */
-	public Position getGoalPosition() {
+	public MapPosition getGoalPosition() {
 		return this.goal;
 	}
 	

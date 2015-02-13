@@ -12,7 +12,7 @@ import java.util.Stack;
 public class DepthFirstSearch implements GridSearchAlgorithm {
 
 	private Stack<GridSearchPath> pathsToCheck;
-	private Set<Position> checkedNodes;
+	private Set<MapPosition> checkedNodes;
 	private GridSearchMap gridMap;
 	private int nodesExpanded;
 	
@@ -23,9 +23,9 @@ public class DepthFirstSearch implements GridSearchAlgorithm {
 	}
 	
 	@Override
-	public GridSearchPath gridSearch(Position start, Position goal) {
+	public GridSearchPath gridSearch(MapPosition start, MapPosition goal) {
 		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
-		checkedNodes = new HashSet<Position>();
+		checkedNodes = new HashSet<MapPosition>();
 		pathsToCheck.push(currPath);
 		
 		while(!pathsToCheck.isEmpty()) {
@@ -38,7 +38,7 @@ public class DepthFirstSearch implements GridSearchAlgorithm {
 			if (currPath.getLastNode().isGoal()) {
 				return currPath;
 			} else {
-				for (Position p: this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
+				for (MapPosition p: this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
 					if (!checkedNodes.contains(p)){
 						pathsToCheck.push(new GridSearchPath(currPath, p));
 					}

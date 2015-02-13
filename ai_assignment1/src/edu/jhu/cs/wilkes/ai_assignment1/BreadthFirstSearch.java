@@ -15,7 +15,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 	
 	private Queue<GridSearchPath> pathsToCheck;
 	private GridSearchMap gridMap;
-	private Set<Position> checkedNodes;
+	private Set<MapPosition> checkedNodes;
 	private int nodesExpanded;
 	/**
 	 * Constructor for the breadth first search. 
@@ -28,10 +28,10 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 	}
 	
 	@Override
-	public GridSearchPath gridSearch(Position start, Position goal) {
+	public GridSearchPath gridSearch(MapPosition start, MapPosition goal) {
 		GridSearchPath currPath = new GridSearchPath(new GridSearchPath(goal), start);
 		pathsToCheck.add(currPath);
-		checkedNodes = new HashSet<Position>();
+		checkedNodes = new HashSet<MapPosition>();
 		
 		while(!pathsToCheck.isEmpty()) {
 			currPath = pathsToCheck.remove();
@@ -45,7 +45,7 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 			if (currPath.getLastNode().isGoal()) {
 				return currPath;
 			} else {
-				for (Position p:  this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
+				for (MapPosition p:  this.gridMap.getAdjacentNodes(currPath.getLastNode())) {
 
 					if (!checkedNodes.contains(p)) {
 
