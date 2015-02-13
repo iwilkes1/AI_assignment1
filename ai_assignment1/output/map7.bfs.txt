@@ -1,0 +1,6 @@
+make: Entering directory `/home/iwilkes1/ai/AI_assignment1/AI_assignment1/ai_assignment1/src'
+java -cp ../bin edu.jhu.cs.wilkes.ai_assignment1.GridSearchMain  /home/iwilkes1/data/map7.txt bfs
+Could not reach the goal.
+Path cost: infinte.
+Number of nodes expanded: 38
+make: Leaving directory `/home/iwilkes1/ai/AI_assignment1/AI_assignment1/ai_assignment1/src'
