@@ -88,7 +88,7 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 		for (Position p: this.path) {
 			System.out.print("(" + p.getX() + "," + p.getY() + "), ");
 		}
-		System.out.println("Path cost: " + this.cost);
+		System.out.println("\nPath cost: " + this.cost);
 	}
 
 	@Override

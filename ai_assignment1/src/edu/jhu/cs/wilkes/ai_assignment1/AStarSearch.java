@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
 
+/**
+ * A* search algorithm implemented using a set to prevent node reuse. 
+ * @author Ian Wilkes
+ *
+ */
 public class AStarSearch implements GridSearchAlgorithm {
 
 	private PriorityQueue<GridSearchPath> pathsToCheck;

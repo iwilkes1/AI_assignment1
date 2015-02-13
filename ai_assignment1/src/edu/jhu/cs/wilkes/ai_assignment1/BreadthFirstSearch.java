@@ -5,6 +5,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
+
+/**
+ * BFS search class.  Implements basic functionality to prevent repeat nodes.
+ * @author Ian Wilkes
+ *
+ */
 public class BreadthFirstSearch implements GridSearchAlgorithm {
 	
 	private Queue<GridSearchPath> pathsToCheck;
@@ -30,7 +36,6 @@ public class BreadthFirstSearch implements GridSearchAlgorithm {
 		while(!pathsToCheck.isEmpty()) {
 			currPath = pathsToCheck.remove();
 			if (checkedNodes.contains(currPath.getLastNode())) {
-				currPath.getLastNode().printPosition();
 				continue;
 				
 			}

@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
+/**
+ * DFS search algorithm.  Uses a set and minor look-ahead to prevent queueing nodes multiple times. 
+ * @author Ian Wilkes
+ *
+ */
 public class DepthFirstSearch implements GridSearchAlgorithm {
 
 	private Stack<GridSearchPath> pathsToCheck;
