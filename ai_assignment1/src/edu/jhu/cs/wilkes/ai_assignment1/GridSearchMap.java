@@ -92,5 +92,18 @@ public class GridSearchMap {
 		return this.goal;
 	}
 	
+	/**
+	 * Returns the heuristic cost of the node to be checked based on half 
+	 * of the sum of the Euclidean and Manhattan distances to the node.
+	 * @param toCheck the position whose heuristic cost we want to compute.
+	 * @return the heuristic cost of the specified position.
+	 */
+	public double getHeuristicCost(MapPosition toCheck) {
+		double xDiff = goal.getX() - toCheck.getX();
+		double yDiff = goal.getY() - toCheck.getY();
+		return (Math.abs(xDiff) + Math.abs(yDiff) + 
+				Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2)))/2.0 ;
+	}
+	
 	
 }
