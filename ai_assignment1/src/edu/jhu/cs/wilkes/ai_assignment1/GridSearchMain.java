@@ -18,6 +18,10 @@ public class GridSearchMain {
 	 * 
 	 */
 	public static void main(String[] args) {
+		// TODO test args 
+		if (args.length >= 1) {
+			System.out.println(args[0]);
+		}
 		Position start;
 		Position goal;
 		GridSearchPath path;
