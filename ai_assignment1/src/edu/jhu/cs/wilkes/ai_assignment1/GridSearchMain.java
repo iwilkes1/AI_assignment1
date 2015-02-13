@@ -1,7 +1,6 @@
 package edu.jhu.cs.wilkes.ai_assignment1;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.FileNotFoundException;;
 
 /**
  * main class for project 1 of artificial intelligence.  Performs various types of search.
@@ -10,7 +9,7 @@ import java.util.Scanner;
  */
 public class GridSearchMain {
 
-	private static String searchType;
+	private static final int NUM_REQUIRED_ARGS = 2;
 	private static GridSearchMap gridMap;
 	/**
 	 * Main method for a program to perform various types of searches.  
@@ -18,15 +17,10 @@ public class GridSearchMain {
 	 * 
 	 */
 	public static void main(String[] args) {
-		// TODO test args 
-		for (int i = 0; i < args.length; i++) {
-			System.out.println(args[i]);
-		}
 		Position start;
 		Position goal;
 		GridSearchPath path;
-		
-		GridSearchAlgorithm searcher = setUpSearch();
+		GridSearchAlgorithm searcher = setUpSearch(args);
 
 		// TODO remove print statements
 		start = gridMap.getStartPosition();
@@ -47,40 +41,42 @@ public class GridSearchMain {
 	}
 	
 	/**
+	 *
 	 * Handles user input to get path to map to be searched.  Also specifies search type.
-	 * @return The search algorithm which will be used for this iteration. 
+	 * Initializes the map file to be used when searching, as well as the search type to be used. 
+	 *  
+	 * @param the command line arguments. first element should be the full path to the map file, and the second is the search type to be used, either bfs, dfs or a*.
+	 * @return The search algorithm which will be used for this iteration.
 	 */
-	private static GridSearchAlgorithm setUpSearch() {
+	private static GridSearchAlgorithm setUpSearch(String[] args) {
 		String mapFile;
+		String searchType;
 		GridSearchAlgorithm searcher = null;
-		boolean notReadyToSearch = true;
-		Scanner kb = new Scanner(System.in);
-		// user prompt for path to map file.
-		while (notReadyToSearch) {
-			System.out.println("Enter full path to data files.");
-			mapFile = kb.next(); 
-			try {
-				gridMap = new GridSearchMap(mapFile);
-				notReadyToSearch = false;
-			} catch (FileNotFoundException e) {
-				System.out.println("Error map file could not be found.");
-			}
+		
+		if (args.length != NUM_REQUIRED_ARGS) {
+			System.out.println("Incorrect number of arguments entered. Exiting.");
+			System.exit(1);
 		}
-		// prompting user for search type.
-		while (searcher == null) {
-			System.out.println("Enter a search type.  Valid types are bfs, dfs, or a*");
-			searchType = kb.next();
-			if (searchType.equalsIgnoreCase("bfs")) {
-				searcher = new BreadthFirstSearch(gridMap);
-			} else if (searchType.equalsIgnoreCase("dfs")) {
-				searcher = new DepthFirstSearch(gridMap);
-			} else if (searchType.equalsIgnoreCase("a*")) {
-				searcher = new AStarSearch(gridMap);
-			} else {
-				System.out.println("Invalid search type.");
-			}
-		}		
-		kb.close();
+		mapFile = args[0];
+		searchType = args[1];
+		// setting up the grid map to be used.
+		try {
+			gridMap = new GridSearchMap(mapFile);
+		} catch (FileNotFoundException e) {
+			System.out.println("Error map file could not be found. Exiting");
+			System.exit(1);
+		}	
+		// setting up the search type.
+		if (searchType.equalsIgnoreCase("bfs")) {
+			searcher = new BreadthFirstSearch(gridMap);
+		} else if (searchType.equalsIgnoreCase("dfs")) {
+			searcher = new DepthFirstSearch(gridMap);
+		} else if (searchType.equalsIgnoreCase("a*")) {
+			searcher = new AStarSearch(gridMap);
+		} else {
+			System.out.println("Invalid search type. Exiting");
+			System.exit(1);
+		}			
 		return searcher;
 	}
 }
