@@ -35,12 +35,15 @@ public class GridSearchPath implements Comparable<GridSearchPath> {
 	}
 	
 	/**
-	 * Adds a node to an existing path at the end of the path and updates the path
+	 * Adds a node to an existing path at the end of the path and updates the path.
+	 * If the path being added to is empty, then the node added is the start node, so no cost is added.
 	 * @param toAdd the new node to add. 
 	 */
 	public void addNode(MapPosition toAdd) {
+		if (this.path.size() != 0) {
+			this.cost += toAdd.getCost();
+		}
 		this.path.add(toAdd);
-		this.cost += toAdd.getCost();
 	}
 	
 	/**

@@ -70,7 +70,8 @@ public class GridSearchMain {
 			//searcher = new DepthFirstSearch(gridMap);
 			searcher = new OtherDepthFirstSearch(gridMap);
 		} else if (searchType.equalsIgnoreCase("astar")) {
-			searcher = new AStarSearch(gridMap);
+			searcher = new OtherAStarSearch(gridMap);
+			//searcher = new AStarSearch(gridMap);
 		} else {
 			System.out.println("Invalid search type. Exiting");
 			System.exit(1);

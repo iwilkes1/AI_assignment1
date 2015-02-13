@@ -8,7 +8,7 @@ package edu.jhu.cs.wilkes.ai_assignment1;
 public class SearchPosition implements Comparable<SearchPosition>{
 	private MapPosition currentPosition;
 	private SearchPosition previousPosition;
-	private int aStarCost;
+	private double aStarCost;
 	private int currPathCost;
 	
 	public SearchPosition(MapPosition currentPosition, SearchPosition prevPosition) {
@@ -18,11 +18,11 @@ public class SearchPosition implements Comparable<SearchPosition>{
 		this.currPathCost = 0;
 	}
 	
-	public SearchPosition(MapPosition currentPosition, SearchPosition prevPosition, int heuristicCost, int prevPathCost) {
+	public SearchPosition(MapPosition currentPosition, SearchPosition prevPosition, double d, int prevPathCost) {
 		this.currentPosition = currentPosition;
 		this.previousPosition = prevPosition;
 		this.currPathCost = prevPathCost + this.currentPosition.getCost();
-		this.aStarCost = heuristicCost + this.currPathCost;
+		this.aStarCost = d + this.currPathCost;
 	}
 	
 	public MapPosition getCurrentPosition() {
